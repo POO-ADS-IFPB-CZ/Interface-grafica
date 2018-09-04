@@ -10,7 +10,7 @@ public class Janela extends JFrame {
     private JLabel label1, label2, label3, label4, label5, label6;
     private JTextField tfNome;
     private JPasswordField pfSenha;
-    private JFormattedTextField tfCpf;
+    private JFormattedTextField tfCpf, tfNascimento;
 
     public Janela(String titulo){
         super(titulo);
@@ -54,19 +54,28 @@ public class Janela extends JFrame {
 //        pfSenha.setEchoChar('*');
         container.add(pfSenha);
 
-        MaskFormatter formatter = null;
+        MaskFormatter formatterCpf = null;
+        MaskFormatter formatterNascimento = null;
         try{
-            formatter = new MaskFormatter("###.###.###-##");
+            formatterCpf = new MaskFormatter("###.###.###-##");
+            formatterNascimento = new MaskFormatter("##/##/####");
         }catch(ParseException ex){
             ex.printStackTrace();
         }
-        tfCpf = new JFormattedTextField();
 
-        if(formatter!= null){
-            formatter.install(tfCpf);
+        tfCpf = new JFormattedTextField();
+        if(formatterCpf != null){
+            formatterCpf.install(tfCpf);
         }
         tfCpf.setBounds(120,30,200,20);
         container.add(tfCpf);
+
+        tfNascimento = new JFormattedTextField();
+        if(formatterNascimento != null){
+            formatterNascimento.install(tfNascimento);
+        }
+        tfNascimento.setBounds(120,90,200,20);
+        container.add(tfNascimento);
 
     }
 
