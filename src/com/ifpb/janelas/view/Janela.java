@@ -11,6 +11,9 @@ public class Janela extends JFrame {
     private JTextField tfNome;
     private JPasswordField pfSenha;
     private JFormattedTextField tfCpf, tfNascimento;
+    private JComboBox cbCargo;
+    private JRadioButton btMasculino, btFeminino;
+    private JButton btSalvar, btLimpar;
 
     public Janela(String titulo){
         super(titulo);
@@ -25,6 +28,9 @@ public class Janela extends JFrame {
 
         adicionarLabels(container);
         addTextFields(container);
+        addComboBox(container);
+        addRadioButton(container);
+        addButtons(container);
 
         //Ajustar layout para FlowLayout - antes de add componentes
 //        container.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -34,6 +40,49 @@ public class Janela extends JFrame {
 
         //Ajustar layout para GridLayout
 //        container.setLayout(new GridLayout(2,3));
+
+    }
+
+    private void addButtons(Container container) {
+
+        btSalvar = new JButton("Salvar");
+        btLimpar = new JButton("Limpar");
+
+        btSalvar.setBounds(60, 220, 100, 30);
+        btLimpar.setBounds(190, 220,100, 30);
+
+        container.add(btSalvar);
+        container.add(btLimpar);
+
+    }
+
+    private void addRadioButton(Container container) {
+
+        btMasculino = new JRadioButton("Masculino");
+        btFeminino = new JRadioButton("Feminino");
+
+        btFeminino.setSelected(true);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(btMasculino);
+        group.add(btFeminino);
+
+        btMasculino.setBackground(Color.white);
+        btFeminino.setBackground(Color.white);
+
+        btMasculino.setBounds(120, 120, 100, 20);
+        btFeminino.setBounds(230, 120, 100,20);
+
+        container.add(btMasculino);
+        container.add(btFeminino);
+    }
+
+    private void addComboBox(Container container) {
+
+        String array[] = {"Atendimento", "Caixa", "Cozinha", "Gerência"};
+        cbCargo = new JComboBox(array);
+        cbCargo.setBounds(120, 180, 200, 20);
+        container.add(cbCargo);
 
     }
 
