@@ -3,8 +3,7 @@ package com.ifpb.janelas.view;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.text.ParseException;
 
 public class Janela extends JFrame {
@@ -21,12 +20,51 @@ public class Janela extends JFrame {
         super(titulo);
         setSize(350,300);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setIconImage(new ImageIcon("google.png").getImage());
 
         Container container = getContentPane();
         container.setBackground(new Color(255,255,255));
         container.setLayout(null);
+
+        /*
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("Bem vindo...");
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("A janela está fechando...");
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("Fechou!");
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+                System.out.println("Foi minimizado");
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+                System.out.println("Foi \"desminimizado\"");
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                System.out.println("Foi ativada");
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+                System.out.println("Foi desativada");
+            }
+        });
+*/
 
         adicionarLabels(container);
         addTextFields(container);
@@ -53,17 +91,52 @@ public class Janela extends JFrame {
         btSalvar.setBounds(60, 220, 100, 30);
         btLimpar.setBounds(190, 220,100, 30);
 
+        /*
+        btSalvar.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("X:"+ e.getX());
+                System.out.println("Y "+ e.getY());
+                System.out.println(e.getClickCount());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.out.println("Apertou");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("Soltou");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("Entrou no botão");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                System.out.println("Saiu do botão");
+            }
+        });
+        */
+
         btSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("OK");
+                // Montar o objeto Funcionário e imprimir
+                // o toString em um JOptionPane
+                System.out.println(tfNome.getText());
+                System.out.println(new String(pfSenha.getPassword()));
             }
         });
 
         btLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Limpar");
+                //Limpar o formulário
+                tfNome.setText("");
             }
         });
 
@@ -113,6 +186,25 @@ public class Janela extends JFrame {
 //        tfNome.setText(texto);
 //        tfNome.setSelectionStart(0);
 //        tfNome.setSelectionEnd(texto.length());
+
+        /*
+        tfNome.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                System.out.println(e.getKeyChar());
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("Soltou a tecla");
+            }
+        });
+*/
 
         pfSenha = new JPasswordField();
         pfSenha.setBounds(120,150,200,20);
@@ -168,7 +260,7 @@ public class Janela extends JFrame {
 
     }
 
-
+    /*
     private void adicionarComponentesGridLayout(Container container) {
         JButton botao1 = new JButton("Botão 1");
         JButton botao2 = new JButton("Botão 2");
@@ -184,7 +276,9 @@ public class Janela extends JFrame {
         container.add(botao5);
         container.add(botao6);
     }
+    */
 
+    /*
     private void adicionarComponentesBorderLayout(Container container) {
 
         JButton botao1 = new JButton("Norte");
@@ -203,6 +297,7 @@ public class Janela extends JFrame {
         container.add(botao5, BorderLayout.CENTER);
 
     }
+*/
 
     public static void main(String[] args) {
 
@@ -211,13 +306,14 @@ public class Janela extends JFrame {
 
     }
 
+    /*
     private class OuvinteBotao implements ActionListener{
-
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println(e.getWhen());
         }
 
     }
+    */
 
 }
