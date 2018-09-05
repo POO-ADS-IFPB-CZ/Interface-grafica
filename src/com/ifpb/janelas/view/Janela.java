@@ -3,6 +3,8 @@ package com.ifpb.janelas.view;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 public class Janela extends JFrame {
@@ -50,6 +52,20 @@ public class Janela extends JFrame {
 
         btSalvar.setBounds(60, 220, 100, 30);
         btLimpar.setBounds(190, 220,100, 30);
+
+        btSalvar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("OK");
+            }
+        });
+
+        btLimpar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Limpar");
+            }
+        });
 
         container.add(btSalvar);
         container.add(btLimpar);
@@ -192,6 +208,15 @@ public class Janela extends JFrame {
 
         Janela janela = new Janela("Cadastro de Funcionário");
         janela.setVisible(true);
+
+    }
+
+    private class OuvinteBotao implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(e.getWhen());
+        }
 
     }
 
